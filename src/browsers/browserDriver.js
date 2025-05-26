@@ -62,7 +62,7 @@ const browserDriver = {
     if(browserSettings.browserDriverCustomLocation){
       if(browserSettings.browserBinaryCustomLocation){ //custom browser with custom driver
         console.log("Custom browser with custom driver")
-        var service = new chrome.ServiceBuilder(browserSettings.browserDriverCustomLocation);
+        const service = new chrome.ServiceBuilder(browserSettings.browserDriverCustomLocation);
         chromeOptions.setChromeBinaryPath(browserSettings.browserBinaryCustomLocation)
         return await new Builder()
         .forBrowser("chrome")
@@ -71,7 +71,7 @@ const browserDriver = {
         .build();  
       }else{ //default browser with custom driver
         console.log("Default browser with custom driver")
-        var service = new chrome.ServiceBuilder(browserSettings.browserDriverCustomLocation);
+        const service = new chrome.ServiceBuilder(browserSettings.browserDriverCustomLocation);
         return await new Builder()
         .forBrowser("chrome")
         .setChromeService(service)
@@ -82,11 +82,11 @@ const browserDriver = {
       //default mode : 
       //browser and driver will be downloaded and configured
       console.log("Browser and driver will be downloaded and configured")
-      var browserHelper = new BrowserHelper();
-      var version = await browserHelper.getVersionByBuildId("chrome", "stable");
-      var binaryResponse = await browserHelper.downloadBrowserBinary("chrome", version);
-      var driverResponse = await browserHelper.downloadBrowserDriver("chrome", version);   
-      var service = new chrome.ServiceBuilder(driverResponse.executableLocation);
+      const browserHelper = new BrowserHelper();
+      const version = await browserHelper.getVersionByBuildId("chrome", "stable");
+      const binaryResponse = await browserHelper.downloadBrowserBinary("chrome", version);
+      const driverResponse = await browserHelper.downloadBrowserDriver("chrome", version);   
+      const service = new chrome.ServiceBuilder(driverResponse.executableLocation);
       chromeOptions.setChromeBinaryPath(binaryResponse.executableLocation)
       return await new Builder()
       .forBrowser("chrome")
@@ -122,10 +122,10 @@ const browserDriver = {
       })
     }
 
-    var webDriverCustomLocation = process.env.GECKO_DRIVER_LOCATION || browserSettings.webDriverAbsoluteLocation;
+    const webDriverCustomLocation = process.env.GECKO_DRIVER_LOCATION || browserSettings.webDriverAbsoluteLocation;
 
     if(typeof webDriverCustomLocation!=='undefined'){
-      var service = new firefox.ServiceBuilder(webDriverCustomLocation);
+      const service = new firefox.ServiceBuilder(webDriverCustomLocation);
       return await new Builder()
       .forBrowser("firefox")
       .setFirefoxService(service)

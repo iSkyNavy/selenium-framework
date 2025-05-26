@@ -13,10 +13,10 @@ const Table = require("cli-table");
  */
 const getCleanedString = (string) => {
   // Characters we don't want to support
-  var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+  const specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
 
   // Remove characters we don't support
-  for (var i = 0; i < specialChars.length; i++) {
+  for (let i = 0; i < specialChars.length; i++) {
     string = string.replaceAll(new RegExp("\\" + specialChars[i], 'gi'), '');
   }
 

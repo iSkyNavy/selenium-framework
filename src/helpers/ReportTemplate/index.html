@@ -146,8 +146,8 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0-rc.1/Chart.js"></script>
   <script type="text/javascript">
-    var report = #data_report;
-    var columnsName = #columns_name;
+    const report = #data_report;
+    const columnsName = #columns_name;
   </script>
 
 </head>
@@ -241,7 +241,7 @@
       }
       data = dataAdapter(data)
 
-      var table = document.getElementById("table").getElementsByTagName('tbody')[0];
+      const table = document.getElementById("table").getElementsByTagName('tbody')[0];
 
       let columns_header = `<th class="test-result-table-header-cell" style='width:25px;'>#</th>`;
       columnsName.map(name => {
@@ -259,7 +259,7 @@
       data.reportRows.forEach(function (scenarioStat, i) {
 
         //insert tr to body
-        var row = table.insertRow();
+        const row = table.insertRow();
         row.id = i;
 
         //insert td to tr
@@ -296,9 +296,9 @@
           createErrorRow(table, `error_${i}`, error_log);
 
           row.onclick = function () {
-            var rowId = this.id;
+            const rowId = this.id;
             if (document.getElementById(`error_${rowId}`)) {
-              var currentDisplay = document.getElementById(`error_${rowId}`).style.display;
+              const currentDisplay = document.getElementById(`error_${rowId}`).style.display;
               document.getElementById(`error_${rowId}`).style.display = (currentDisplay === 'none' ? "" : "none");
             }
           };
@@ -308,13 +308,13 @@
     }
 
     function showChart(data) {
-      var total = data.total;
-      var passed = (data.passed > 0 ? Math.round((data.passed * 100) / total) : 0);
-      var pending = (data.pending > 0 ? Math.round((data.pending * 100) / total) : 0);
-      var failed = (data.failed > 0 ? Math.round((data.failed * 100) / total) : 0);
+      const total = data.total;
+      const passed = (data.passed > 0 ? Math.round((data.passed * 100) / total) : 0);
+      const pending = (data.pending > 0 ? Math.round((data.pending * 100) / total) : 0);
+      const failed = (data.failed > 0 ? Math.round((data.failed * 100) / total) : 0);
 
-      var ctx = document.getElementById("myChart").getContext('2d');
-      var myChart = new Chart(ctx, {
+      const ctx = document.getElementById("myChart").getContext('2d');
+      const myChart = new Chart(ctx, {
         type: 'pie',
         data: {
           labels: [`Passed ${passed} %`, `Failed ${failed} %`, `Pending ${pending} %`],

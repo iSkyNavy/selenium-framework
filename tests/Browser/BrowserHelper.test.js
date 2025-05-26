@@ -4,26 +4,26 @@ const BrowserHelper = require("../../src/browsers/BrowserHelper.js");
 
 describe('BrowserHelper', () => {
     test('should download chrome browser binary', async () => {
-        var browserLocation = path.join(process.cwd(), ".chrome");
+        const browserLocation = path.join(process.cwd(), ".chrome");
         if (fs.existsSync(browserLocation)) {
             await fs.promises.rm(browserLocation, { recursive: true });  
         }            
-        var browserHelper = new BrowserHelper();
-        var version = await browserHelper.getVersionByBuildId("chrome", "stable");
-        var response = await browserHelper.downloadBrowserBinary("chrome", version);
-        var exist = fs.existsSync(response.executableLocation);
+        const browserHelper = new BrowserHelper();
+        const version = await browserHelper.getVersionByBuildId("chrome", "stable");
+        const response = await browserHelper.downloadBrowserBinary("chrome", version);
+        const exist = fs.existsSync(response.executableLocation);
         expect(exist).toBe(true)
     });
 
     test('should download chrome browser driver', async () => {
-        var browserLocation = path.join(process.cwd(), ".chrome");
+        const browserLocation = path.join(process.cwd(), ".chrome");
         if (fs.existsSync(browserLocation)) {
             await fs.promises.rm(browserLocation, { recursive: true });  
         }            
-        var browserHelper = new BrowserHelper();
-        var version = await browserHelper.getVersionByBuildId("chrome", "stable");
-        var response = await browserHelper.downloadBrowserDriver("chrome", version);
-        var exist = fs.existsSync(response.executableLocation);
+        const browserHelper = new BrowserHelper();
+        const version = await browserHelper.getVersionByBuildId("chrome", "stable");
+        const response = await browserHelper.downloadBrowserDriver("chrome", version);
+        const exist = fs.existsSync(response.executableLocation);
         expect(exist).toBe(true)
     });  
 });

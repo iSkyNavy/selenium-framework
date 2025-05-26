@@ -4,5 +4,6 @@ describe('Browser', () => {
     test('should return the default browser when not exist the enviroment variable', async () => {
         const driver = await getBrowserDriver();
         expect(driver).toBeTruthy();
+        await driver.quit()
     });
 });
