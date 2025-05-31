@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node .",
-    "test:linux": "./tests/test.sh"
+    "test": "./tests/test.sh"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -35,18 +35,13 @@
     "test",
     "jest"
   ],
-  "author": "JRichardsz",
   "license": "ISC",
   "dependencies": {
-    "advanced-settings": "git+https://github.com/usil/advanced-settings.git",
     "archiver": "^5.3.1",
     "axios": "^1.6.8",
     "chromedriver": "^109.0.0",
-    "cli-color": "^2.0.1",
     "cli-table": "^0.3.11",
-    "clui": "^0.3.6",
     "colors": "^1.4.0",
-    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "download": "^8.0.0",
     "extract-zip": "^2.0.1",

@@ -30,7 +30,7 @@ const browserDriver = {
       optionsKeys = Object.keys(browserSettings.options);
     }
     if (optionsKeys?.length > 0) {
-      optionsKeys.map(option => {
+      optionsKeys.forEach(option => {
         try {
           if ( typeof browserSettings.options[option] === "string") {
             chromeOptions = chromeOptions[option](browserSettings.options[option]);
@@ -108,7 +108,7 @@ const browserDriver = {
       optionsKeys = Object.keys(browserSettings.options);
     }
     if (optionsKeys?.length > 0) {
-      optionsKeys.map(option => {
+      optionsKeys.forEach(option => {
         try {
           if ( typeof browserSettings.options[option] === "string") {
             firefoxOptions = firefoxOptions[option](browserSettings.options[option]);

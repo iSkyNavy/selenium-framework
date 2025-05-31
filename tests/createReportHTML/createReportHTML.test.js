@@ -1,6 +1,6 @@
 const { createReportHTML, fileExists } = require("../../src/helpers/testHelpers");
 const path = require("path");
-const { EnvSettings } = require("advanced-settings");
+const { EnvSettings } = require("../../src/helpers/AdvancedSettings");
 const envSettings = new EnvSettings();
 const packPath = require("package-json-path");
 const { v4 } = require("uuid");

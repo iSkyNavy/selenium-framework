@@ -1,4 +1,4 @@
-const { EnvSettings } = require("advanced-settings");
+const { EnvSettings } = require("../../src/helpers/AdvancedSettings");
 const { formatVarsEnv, getVariable } = require("../../src/helpers/testHelpers");
 const path = require("path");
 const envSettings = new EnvSettings();

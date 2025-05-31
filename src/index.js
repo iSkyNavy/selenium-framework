@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const os = require("os");
 const { v4 } = require("uuid")
-const { EnvSettings } = require("advanced-settings");
+const { EnvSettings } = require("./helpers/AdvancedSettings");
 const util = require("util");
 const Compresser = require ('./helpers/Compresser');
 const Mailer = require ('./helpers/Mailer');

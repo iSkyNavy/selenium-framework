@@ -1,5 +1,5 @@
 const { getVariable, formatVarsEnv } = require("../../src/helpers/testHelpers");
-const { EnvSettings } = require("advanced-settings");
+const { EnvSettings } = require("../../src/helpers/AdvancedSettings");
 const path = require("path");
 const { env } = require("process");
 const util = require("util");
