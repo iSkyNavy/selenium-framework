@@ -153,23 +153,25 @@ const main = () => {
           }
         )
           .then(async (result) => {
+            console.log('-----success------');
             // Print the jest result
             console.info(result.stderr.blue);
-          if (columnNames.length > 0) {
-            const tableCreated = await createTable(suiteIdentifier, varToEnv.EXECUTION_SUITE, varToEnv.TEST_UUID, rootPath, columnNames, reportMode);
-            console.info(tableCreated.toString() + "\n"); //* Prints the table
-            createReportHTML(suiteIdentifier, varToEnv.EXECUTION_SUITE, testOptions, varToEnv.TEST_UUID, rootPath)
-            .then( async () => {
-              if (smtpParams?.enableSmtpNotification == true && smtpParams?.disableMailNotificationOnSuccess != true) {
-                compresser.run(resolveSourcePath, resolveSourcePath);
-                let titleBody ="<p> No errors detected in tests for " +  `<b>${suiteIdentifier}.</b> <p>\n`;
-                const bodyHtmlReport = await mailer.createTableHtmlToReportMailer(indexResolvePath, titleBody);
-                mailer.sendMail(params, varToEnv.TEST_UUID, "Success", bodyHtmlReport, smtpParams, "\u{1f600}", smtpParams?.customEmailSubjectPattern ?? null);
-              }
-            });
+            if (columnNames.length > 0) {
+              const tableCreated = await createTable(suiteIdentifier, varToEnv.EXECUTION_SUITE, varToEnv.TEST_UUID, rootPath, columnNames, reportMode);
+              console.info(tableCreated.toString() + "\n"); //* Prints the table
+              createReportHTML(suiteIdentifier, varToEnv.EXECUTION_SUITE, testOptions, varToEnv.TEST_UUID, rootPath)
+              .then( async () => {
+                if (smtpParams?.enableSmtpNotification == true && smtpParams?.disableMailNotificationOnSuccess != true) {
+                  compresser.run(resolveSourcePath, resolveSourcePath);
+                  let titleBody ="<p> No errors detected in tests for " +  `<b>${suiteIdentifier}.</b> <p>\n`;
+                  const bodyHtmlReport = await mailer.createTableHtmlToReportMailer(indexResolvePath, titleBody);
+                  mailer.sendMail(params, varToEnv.TEST_UUID, "Success", bodyHtmlReport, smtpParams, "\u{1f600}", smtpParams?.customEmailSubjectPattern ?? null);
+                }
+              });
             }
           })
           .catch(async (err) => {
+            console.log('-----failed------');
             if (!err.killed) {
               // Print the jest result
               console.info(err.stderr.red);
@@ -189,6 +191,7 @@ const main = () => {
             } else {
               console.error("error".red, err);
             }
+            throw Error('＄There are errors')
           });
       }
     }
